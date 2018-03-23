@@ -6,10 +6,12 @@
 # Only calculates for positive integers
 def calc_factorial(n):
 	# Stop recursing when n is 1
-	if n <= 0:
+	if n < 0:
 		return "not computable because the number is negative"
-	elif n == 1:
-		return "Factorial "
+	elif n == 0 or n == 1:
+		return 1
+	else:
+		return n * calc_factorial(n-1)
 
-num = -5
+num = 0
 print "The factorial of", num, "is", calc_factorial(num)
