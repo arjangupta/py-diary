@@ -13,5 +13,5 @@ def calc_factorial(n):
 	else:
 		return n * calc_factorial(n-1)
 
-num = 0
+num = 5
 print "The factorial of", num, "is", calc_factorial(num)
