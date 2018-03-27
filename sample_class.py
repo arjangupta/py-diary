@@ -3,3 +3,5 @@
 	Description: Script to show specimen python class
 """
 
+class Animal(object):
+	pass
