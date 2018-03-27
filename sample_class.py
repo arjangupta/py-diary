@@ -4,5 +4,9 @@
 """
 
 class Animal(object):
-	def __init__(self):
-		pass # empty initializer
+	def __init__(self, name):
+		self.name = name
+
+print "We created a Animal class instance - a zebra."
+zebra = Animal("Marty")
+print  "The name of this zebra is", zebra.name
