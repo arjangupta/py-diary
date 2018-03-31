@@ -1,6 +1,6 @@
 """
 	Created by Arjan Gupta on 3/31/2018
-	Description: Useful notes in python
+	Description: Useful notes of features in python
 """
 
 # Multi-line strings for multi-line output
