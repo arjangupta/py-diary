@@ -1,4 +1,5 @@
 def rotate_by_n_chars(string, n_rotations):
-    print(chr(ord(string[n_rotations])+2))
-
-rotate_by_n_chars("Hello", 2)
+    for char in string:
+        print(chr(ord(char) + n_rotations))
+ 
+rotate_by_n_chars("Hello", -2)
