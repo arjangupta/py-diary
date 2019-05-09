@@ -1,8 +1,8 @@
 def rotate_by_n_chars(string, n_rotations):
     resultant_string = ''
     for char in string:
-        if char == ' ':
-            resultant_string += ' '
+        if char == ' ' or char == '.' or char == '(' or char == ')' or char == "'":
+            resultant_string += char
         else:
             raw_rotation = ord(char) + n_rotations
             adjusted_rotation = 0
