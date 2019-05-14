@@ -1,6 +1,7 @@
 # The encrypted message recommends the usage of maketrans()
 
 def rotate_by_n_chars(string, n_rotations):
+    #TODO: Use n_rotations to slice the first n_rotations chars and form output_template_string
     input_template_string =  "abcdefghijklmnopqrstuvwxyz"
     output_template_string = "cdefghijklmnopqrstuvwxyzab"
     translation_table = string.maketrans(input_template_string, output_template_string)
