@@ -1,8 +1,10 @@
 # The encrypted message recommends the usage of maketrans()
 
 def rotate_by_n_chars(string, n_rotations):
-    return "HELLO WORLD"
-
+    input_template_string =  "abcdefghijklmnopqrstuvwxyz"
+    output_template_string = "cdefghijklmnopqrstuvwxyzab"
+    translation_table = string.maketrans(input_template_string, output_template_string)
+    return string.translate(translation_table)
 
 string_to_be_rotated = ''
 with open('problem2_encrypted_message.txt') as file:
