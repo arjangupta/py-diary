@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index(): #this function can be named anything. It defines the route of the landing page, i.e. '/'
-    return 'Hello World'
+    return render_template("index.html")
 
 @app.route('/tacos')
 def tacos():
