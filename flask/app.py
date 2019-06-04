@@ -12,7 +12,7 @@ def index(): #this function can be named anything. It defines the route of the l
 
 @app.route('/tacos')
 def tacos():
-    return render_template("tacos.html")
+    return render_template("tacos.html", num_tacos=num_tacos)
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0') #0.0.0.0 means that this web app is accessible to any device on the current network
