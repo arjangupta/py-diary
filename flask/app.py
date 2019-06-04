@@ -1,6 +1,6 @@
 # Arjan's first Flask program
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -13,9 +13,12 @@ def index(): #this function can be named anything. It defines the route of the l
 @app.route('/tacos', methods=['POST', 'GET'])
 def tacos():
     global num_tacos
-    print("You have hit the tacos endpoint")
+    print("Taco endpoint is being hit")
     num_tacos += 1
-    return render_template("tacos.html", tacos_requested=num_tacos)
+    if request.method == 'GET':
+        return render_template("tacos.html", tacos_requested=num_tacos)
+    else:
+        return f"You have requested {num_tacos} tacos!\n" 
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0') #0.0.0.0 means that this web app is accessible to any device on the current network
