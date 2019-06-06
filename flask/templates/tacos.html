@@ -3,11 +3,13 @@
 
 <head>
     <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="/static/js/socket.io.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='tacos.js') }}"></script>
     <title>Taco Endpoint</title>
 </head>
 
-<body>
-    <h3>You have requested {{ tacos_requested }} tacos!</h3>
+<body onload="tacoInfo( '{{ tacos_requested }}' )">
+    <div id="tacoHeading3">You have requested 0 tacos</div>
 </body>
 
 </html>
