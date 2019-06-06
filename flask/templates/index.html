@@ -3,15 +3,19 @@
 
 <head>
     <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="{{ url_for('static', filename='socket.io.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='tacos.js') }}"></script>
     <title>Arjan's First Flask App</title>
 </head>
 
 <body>
-    <h3>Arjan's First Flask App</h3>
-
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dolor sed viverra ipsum nunc aliquet bibendum. Mauris pellentesque pulvinar pellentesque habitant morbi. Morbi leo urna molestie at elementum eu. Et leo duis ut diam quam nulla. Nunc vel risus commodo viverra maecenas. Bibendum ut tristique et egestas. Semper feugiat nibh sed pulvinar proin gravida hendrerit lectus. Nulla malesuada pellentesque elit eget gravida cum sociis. Lacinia at quis risus sed vulputate odio. Vitae auctor eu augue ut lectus arcu bibendum. Convallis tellus id interdum velit laoreet id donec ultrices tincidunt. Sit amet consectetur adipiscing elit pellentesque. Velit egestas dui id ornare arcu odio. Vulputate sapien nec sagittis aliquam. Ac turpis egestas sed tempus urna. Felis eget nunc lobortis mattis aliquam faucibus purus in massa. Sem nulla pharetra diam sit amet nisl suscipit adipiscing bibendum. In fermentum posuere urna nec tincidunt praesent semper feugiat nibh.
-    </p>
+    <h3>Sample Flask App</h3>
+    <div id="sample_para_text">
+        <script>
+                alert("1");
+                tacoInfo();
+        </script>
+    </div>
 </body>
 
 </html>

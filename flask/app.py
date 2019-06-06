@@ -18,7 +18,7 @@ def tacos():
     global num_tacos
     print("Taco endpoint is being hit")
     num_tacos += 1
-    emit('tacoUpdate', num_tacos)
+    socketio.emit('tacoUpdate', num_tacos)
     return f"You have requested {num_tacos} tacos!\n" 
 
 if __name__ == '__main__':
