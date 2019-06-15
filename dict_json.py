@@ -16,3 +16,9 @@ song2[song1_keys[1]] = 'Green Day'
 song2[song1_keys[2]] = 'American Idiot'
 song2_json_str = str(json.dumps(song2))
 print(f"Song 2: {song2_json_str}")
+
+songs = {"Song 1": song1, "Song 2": song2}
+print(f"\nSongs: {songs}\n")
+
+songs_json = str(json.dumps(songs))
+print(f'\nSongs JSON: {songs_json}\n')
