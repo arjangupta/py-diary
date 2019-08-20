@@ -1,4 +1,4 @@
 ### Environment packages used
-conda install flask
-conda install -c conda-forge flask-socketio
-conda install -c conda-forge eventlet
+conda install flask<br/>
+conda install -c conda-forge flask-socketio<br/>
+conda install -c conda-forge eventlet<br/>
