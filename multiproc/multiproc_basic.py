@@ -26,9 +26,9 @@ def main():
     procs.append(mp.Process(target=nested_busy_loop))
     procs[0].start()
 
-    # Create a list of IntegerPairs
+    # Create a list of IntegerPairs, but only as many as there are processors
     int_pairs = []
-    for i in range(1,10):
+    for i in range(1, mp.cpu_count()+1):
         int_pairs.append(IntegerPair(i*1000, (i+1)*1000))
     
     # Create a proc for each IntegerPair
