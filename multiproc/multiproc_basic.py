@@ -1,10 +1,7 @@
 import multiprocessing as mp
 import time
 
-def nested_busy_loop(a=20,b=20):
-    # If a is even, introduce a sleep that is half as long as the value of 'a'
-    if a % 2 == 0:
-        time.sleep(a/2)
+def nested_busy_loop(a=20,b=2000):
     # Create a O(n^2) loop to keep the CPU busy
     c = 0
     for i in range(a):
@@ -32,7 +29,7 @@ def main():
     # Create a list of IntegerPairs
     int_pairs = []
     for i in range(1,10):
-        int_pairs.append(IntegerPair(i*10, (i+1)*10))
+        int_pairs.append(IntegerPair(i*1000, (i+1)*1000))
     
     # Create a proc for each IntegerPair
     for i in range(len(int_pairs)):
