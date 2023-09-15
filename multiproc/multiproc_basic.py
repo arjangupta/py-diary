@@ -29,7 +29,7 @@ def main():
     # Create a list of IntegerPairs, but only as many as there are processors
     int_pairs = []
     for i in range(1, mp.cpu_count()+1):
-        int_pairs.append(IntegerPair(i*1000, (i+1)*1000))
+        int_pairs.append(IntegerPair(i*10000, (i+1)*1000))
     
     # Create a proc for each IntegerPair
     for i in range(len(int_pairs)):
