@@ -1,11 +1,18 @@
 import multiprocessing as mp
 import time
 
-def add_two_ints(a=2,b=2):
+def nested_busy_loop(a=20,b=20):
     # If a is even, introduce a sleep that is half as long as the value of 'a'
     if a % 2 == 0:
         time.sleep(a/2)
-    print(f"{a}+{b}={a+b}")
+    # Create a O(n^2) loop to keep the CPU busy
+    c = 0
+    for i in range(a):
+        for j in range(1,b):
+            c += i*j
+            x = i^j
+            y = i/j
+    print("Nested busy loop complete: ", c)
 
 class IntegerPair:
     def __init__(self, a=2, b=2):
@@ -19,17 +26,17 @@ def main():
     procs = []
 
     # Simple proc without explicit args
-    procs.append(mp.Process(target=add_two_ints))
+    procs.append(mp.Process(target=nested_busy_loop))
     procs[0].start()
 
     # Create a list of IntegerPairs
     int_pairs = []
-    for i in range(10):
-        int_pairs.append(IntegerPair(i, i+1))
+    for i in range(1,10):
+        int_pairs.append(IntegerPair(i*10, (i+1)*10))
     
     # Create a proc for each IntegerPair
     for i in range(len(int_pairs)):
-        procs.append(mp.Process(target=add_two_ints, args=(int_pairs[i].a, int_pairs[i].b)))
+        procs.append(mp.Process(target=nested_busy_loop, args=(int_pairs[i].a, int_pairs[i].b)))
         procs[i+1].start()
 
     # Complete all processes
