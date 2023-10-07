@@ -481,60 +481,86 @@ while True:
     event = events.get(1e6)
     if event.key == keyboard.KeyCode.from_char('a'):
       print(ascii_art['a'])
+      print(ascii_art['a'])
     elif event.key == keyboard.KeyCode.from_char('b'):
+      print(ascii_art['b'])
       print(ascii_art['b'])
     elif event.key == keyboard.KeyCode.from_char('c'):
       print(ascii_art['c'])
+      print(ascii_art['c'])
     elif event.key == keyboard.KeyCode.from_char('d'):
+      print(ascii_art['d'])
       print(ascii_art['d'])
     elif event.key == keyboard.KeyCode.from_char('e'):
       print(ascii_art['e'])
+      print(ascii_art['e'])
     elif event.key == keyboard.KeyCode.from_char('f'):
+      print(ascii_art['f'])
       print(ascii_art['f'])
     elif event.key == keyboard.KeyCode.from_char('g'):
       print(ascii_art['g'])
+      print(ascii_art['g'])
     elif event.key == keyboard.KeyCode.from_char('h'):
+      print(ascii_art['h'])
       print(ascii_art['h'])
     elif event.key == keyboard.KeyCode.from_char('i'):
       print(ascii_art['i'])
+      print(ascii_art['i'])
     elif event.key == keyboard.KeyCode.from_char('j'):
+      print(ascii_art['j'])
       print(ascii_art['j'])
     elif event.key == keyboard.KeyCode.from_char('k'):
       print(ascii_art['k'])
+      print(ascii_art['k'])
     elif event.key == keyboard.KeyCode.from_char('l'):
+      print(ascii_art['l'])
       print(ascii_art['l'])
     elif event.key == keyboard.KeyCode.from_char('m'):
       print(ascii_art['m'])
+      print(ascii_art['m'])
     elif event.key == keyboard.KeyCode.from_char('n'):
+      print(ascii_art['n'])
       print(ascii_art['n'])
     elif event.key == keyboard.KeyCode.from_char('o'):
       print(ascii_art['o'])
+      print(ascii_art['o'])
     elif event.key == keyboard.KeyCode.from_char('p'):
+      print(ascii_art['p'])
       print(ascii_art['p'])
     elif event.key == keyboard.KeyCode.from_char('q'):
       print(ascii_art['q'])
+      print(ascii_art['q'])
     elif event.key == keyboard.KeyCode.from_char('r'):
+      print(ascii_art['r'])
       print(ascii_art['r'])
     elif event.key == keyboard.KeyCode.from_char('s'):
       print(ascii_art['s'])
+      print(ascii_art['s'])
     elif event.key == keyboard.KeyCode.from_char('t'):
+      print(ascii_art['t'])
       print(ascii_art['t'])
     elif event.key == keyboard.KeyCode.from_char('u'):
       print(ascii_art['u'])
+      print(ascii_art['u'])
     elif event.key == keyboard.KeyCode.from_char('v'):
+      print(ascii_art['v'])
       print(ascii_art['v'])
     elif event.key == keyboard.KeyCode.from_char('w'):
       print(ascii_art['w'])
+      print(ascii_art['w'])
     elif event.key == keyboard.KeyCode.from_char('x'):
+      print(ascii_art['x'])
       print(ascii_art['x'])
     elif event.key == keyboard.KeyCode.from_char('y'):
       print(ascii_art['y'])
+      print(ascii_art['y'])
     elif event.key == keyboard.KeyCode.from_char('z'):
+      print(ascii_art['z'])
       print(ascii_art['z'])
     elif event.key == keyboard.Key.esc:
         break
     else:
         pass
-        
+
 
 
