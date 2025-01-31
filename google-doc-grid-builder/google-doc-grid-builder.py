@@ -45,7 +45,7 @@ def get_google_doc_contents(doc_url):
     # Return the extracted text
     return text
 
-def decode_secret_message(doc_url):
+def decode_secret_message(doc_url, debug=False):
     # Get the extracted text from the Google document
     extracted_text = get_google_doc_contents(doc_url)
 
@@ -57,8 +57,6 @@ def decode_secret_message(doc_url):
     data = extracted_text[ (start_index + len(header_string)) : ]
     # Split the data into lines
     data_lines = data.split('\n')
-
-    print(data_lines)
 
     # Declare a hash map of MaxHeaps to map x-coordinates to y-coordinate - Unicode character pairs
     # We can access x-coordinate keys to get the corresponding y-coordinates and print the characters
@@ -85,21 +83,31 @@ def decode_secret_message(doc_url):
         # Insert the y-coordinate - Unicode pair into the MaxHeap for the corresponding x-coordinate
         x_to_y_char[x].insert((y, char))
     
+    if debug:
+        # Show the entire hash map
+        for x, max_heap in x_to_y_char.items():
+            print(f"x={x}: {max_heap._heap}")
+        # Show the largest x and y coordinates
+        print(f"Largest x-coordinate: {largest_x}")
+        print(f"Largest y-coordinate: {largest_y}")
+        return
+
     # Iterate starting from largest y-coordinate to 0
     for y in range(largest_y, -1, -1):
         # Iterate over the x-coordinates in descending order
         for x in range(largest_x, -1, -1):
-            # If the x-coordinate is in the hash map and the MaxHeap is not empty
-            if x in x_to_y_char and len(x_to_y_char[x]) > 0:
-                # Get the largest y-coordinate - Unicode pair
-                largest_y, char = x_to_y_char[x].pop()
-                # If the y-coordinate matches the current iteration, print the Unicode character
-                if largest_y == y:
-                    print(char, end='')
-                # If the y-coordinate is less than the current iteration, push the pair back into the MaxHeap
-                elif largest_y < y:
-                    x_to_y_char[x].insert((largest_y, char))
+            # If the x-coordinate is in the hash map
+            if x in x_to_y_char:
+                # Check if the MaxHeap is not empty and if it is not, then check if
+                # the highest y-coordinate in the MaxHeap is equal to the current y-coordinate
+                if x_to_y_char[x] and x_to_y_char[x].peek()[0] == y:
+                    # Print the Unicode character
+                    print(x_to_y_char[x].pop()[1], end='')
+                else:
+                    # Print a space
+                    print(' ', end='')
             else:
+                # Print a space
                 print(' ', end='')
         # Print a newline after each row
         print()
@@ -107,4 +115,4 @@ def decode_secret_message(doc_url):
 
 
 doc_url = 'https://docs.google.com/document/d/e/2PACX-1vQGUck9HIFCyezsrBSnmENk5ieJuYwpt7YHYEzeNJkIb9OSDdx-ov2nRNReKQyey-cwJOoEKUhLmN9z/pub'
-decode_secret_message(doc_url)
+decode_secret_message(doc_url, debug=False)
