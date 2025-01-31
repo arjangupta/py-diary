@@ -50,13 +50,15 @@ def decode_secret_message(doc_url):
     extracted_text = get_google_doc_contents(doc_url)
 
     # Find the header row of the table
-    header_string = 'x-coordinateCharactery-coordinate'
+    header_string = 'y-coordinate\n'
     start_index = extracted_text.find(header_string)
 
     # Find the beginning of the data
     data = extracted_text[ (start_index + len(header_string)) : ]
     # Split the data into lines
     data_lines = data.split('\n')
+
+    print(data_lines)
 
     # Declare a hash map of MaxHeaps to map x-coordinates to y-coordinate - Unicode character pairs
     # We can access x-coordinate keys to get the corresponding y-coordinates and print the characters
@@ -83,14 +85,23 @@ def decode_secret_message(doc_url):
         # Insert the y-coordinate - Unicode pair into the MaxHeap for the corresponding x-coordinate
         x_to_y_char[x].insert((y, char))
     
-    # Iterate over the x-coordinates from 0 to the largest x-coordinate
-    for x in range(largest_x + 1):
-        # If the x-coordinate is in the hash map, print the Unicode characters in descending order of y-coordinate
-        if x in x_to_y_char:
-            while len(x_to_y_char[x]) > 0:
-                _, char = x_to_y_char[x].pop()
-                print(char, end='')
-        # Print a newline character after each row
+    # Iterate starting from largest y-coordinate to 0
+    for y in range(largest_y, -1, -1):
+        # Iterate over the x-coordinates in descending order
+        for x in range(largest_x, -1, -1):
+            # If the x-coordinate is in the hash map and the MaxHeap is not empty
+            if x in x_to_y_char and len(x_to_y_char[x]) > 0:
+                # Get the largest y-coordinate - Unicode pair
+                largest_y, char = x_to_y_char[x].pop()
+                # If the y-coordinate matches the current iteration, print the Unicode character
+                if largest_y == y:
+                    print(char, end='')
+                # If the y-coordinate is less than the current iteration, push the pair back into the MaxHeap
+                elif largest_y < y:
+                    x_to_y_char[x].insert((largest_y, char))
+            else:
+                print(' ', end='')
+        # Print a newline after each row
         print()
 
 
