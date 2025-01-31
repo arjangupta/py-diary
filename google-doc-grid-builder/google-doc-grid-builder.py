@@ -32,7 +32,7 @@ class MaxHeap:
         """Return the number of elements in the container."""
         return len(self._heap)
 
-def get_google_doc_contents(doc_url):
+def get_and_prepare_google_doc_contents(doc_url):
     # Fetch the document content
     response = requests.get(doc_url)
     # Check if the request was successful (i.e., response code 200)
@@ -41,13 +41,7 @@ def get_google_doc_contents(doc_url):
     # Parse the document content
     soup = BeautifulSoup(response.text, 'html.parser')
     # Extract all text from the document, keep the newlines
-    text = soup.get_text(separator='\n')
-    # Return the extracted text
-    return text
-
-def decode_secret_message(doc_url, debug=False):
-    # Get the extracted text from the Google document
-    extracted_text = get_google_doc_contents(doc_url)
+    extracted_text = soup.get_text(separator='\n')
 
     # Find the header row of the table
     header_string = 'y-coordinate\n'
@@ -56,10 +50,14 @@ def decode_secret_message(doc_url, debug=False):
     # Find the beginning of the data
     data = extracted_text[ (start_index + len(header_string)) : ]
     # Split the data into lines
-    data_lines = data.split('\n')
+    return data.split('\n')
+
+def decode_secret_message(doc_url, debug=False):
+    # Get and prepare the Google document contents
+    data_lines = get_and_prepare_google_doc_contents(doc_url)
 
     # Declare a hash map of MaxHeaps to map x-coordinates to y-coordinate - Unicode character pairs
-    # We can access x-coordinate keys to get the corresponding y-coordinates and print the characters
+    # We can access x-coordinate keys to get the corresponding y-coordinates and then print the characters
     x_to_y_char = {}
 
     # Iterate over the data lines in increments of 3
