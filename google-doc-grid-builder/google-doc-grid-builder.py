@@ -9,8 +9,8 @@ def get_google_doc_contents(doc_url):
 
     # Parse the document content
     soup = BeautifulSoup(response.text, 'html.parser')
-    # Extract all text from the document
-    text = soup.get_text()
+    # Extract all text from the document, keep the newlines
+    text = soup.get_text(separator='\n')
     # Return the extracted text
     return text
 
@@ -24,6 +24,7 @@ def decode_secret_message(doc_url):
 
     # Find the beginning of the data
     data = extracted_text[ (start_index + len(header_string)) : ]
+    print(data)
 
 
 doc_url = 'https://docs.google.com/document/d/e/2PACX-1vQGUck9HIFCyezsrBSnmENk5ieJuYwpt7YHYEzeNJkIb9OSDdx-ov2nRNReKQyey-cwJOoEKUhLmN9z/pub'
