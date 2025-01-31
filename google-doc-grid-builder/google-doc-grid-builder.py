@@ -92,8 +92,8 @@ def decode_secret_message(doc_url, debug=False):
 
     # Iterate starting from largest y-coordinate to 0
     for y in range(largest_y, -1, -1):
-        # Iterate over the x-coordinates in descending order
-        for x in range(largest_x, -1, -1):
+        # Iterate over the x-coordinates in ascending order
+        for x in range(largest_x + 1):
             # If the x-coordinate is in the hash map
             if x in x_to_y_char:
                 # Check if the MaxHeap is not empty and if it is not, then check if
@@ -112,5 +112,6 @@ def decode_secret_message(doc_url, debug=False):
 
 
 
-doc_url = 'https://docs.google.com/document/d/e/2PACX-1vQGUck9HIFCyezsrBSnmENk5ieJuYwpt7YHYEzeNJkIb9OSDdx-ov2nRNReKQyey-cwJOoEKUhLmN9z/pub'
+# doc_url = 'https://docs.google.com/document/d/e/2PACX-1vRMx5YQlZNa3ra8dYYxmv-QIQ3YJe8tbI3kqcuC7lQiZm-CSEznKfN_HYNSpoXcZIV3Y_O3YoUB1ecq/pub' # example url
+doc_url = 'https://docs.google.com/document/d/e/2PACX-1vQGUck9HIFCyezsrBSnmENk5ieJuYwpt7YHYEzeNJkIb9OSDdx-ov2nRNReKQyey-cwJOoEKUhLmN9z/pub' # actual url
 decode_secret_message(doc_url, debug=False)
